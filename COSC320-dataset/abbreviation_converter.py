@@ -1,6 +1,8 @@
 import re
 
-abbreviation_table = {
+# Step 1: Create a dictionary of abbreviations
+abbreviations = {
+    "WTH": "What The Hell",
     "ASAP": "As Soon As Possible",
     "BTW": "By The Way",
     "DIY": "Do It Yourself",
@@ -35,23 +37,24 @@ abbreviation_table = {
     "WTF": "What The F***"
 }
 
-
-def replace_abbreviations(match):
-    abbreviation = match.group(0).upper()
-    return abbreviation_table.get(abbreviation, abbreviation)
+# Step 2: Define a function to replace abbreviations in a line
 
 
-# Regular expression pattern for matching abbreviations
-abbreviations = list(abbreviation_table.keys())
-abbreviation_pattern = re.compile(
-    r'\b(?:' + '|'.join(re.escape(abbr) for abbr in abbreviations) + r')\b', re.IGNORECASE)
+def replace_abbreviations(line, abbrev_dict):
+    pattern = re.compile(r'\b(?:' + '|'.join(re.escape(key)
+                         for key in abbrev_dict.keys()) + r')\b')
+    return pattern.sub(lambda x: abbrev_dict[x.group()], line)
+
 
 input_file = "one_giant_string.txt"
-output_file = "converted_text.txt"
+output_file = "converted_giant_string.txt"
 
-with open(input_file, "r", encoding="utf-8") as infile, open(output_file, "w", encoding="utf-8") as outfile:
-    for line in infile:
-        converted_line = abbreviation_pattern.sub(replace_abbreviations, line)
-        outfile.write(converted_line)
-
-print("Abbreviations replaced and output saved in", output_file)
+# Read the input and process it all line by line
+with open(input_file, 'r', encoding='utf-8') as infile:
+    with open(output_file, 'w', encoding='utf-8') as outfile:
+        for line in infile:
+            # Replace abbreviations in the current line
+            converted_line = replace_abbreviations(line, abbreviations)
+            # Write the converted line to the output file
+            outfile.write(converted_line)
+print("Conversion completed.")
