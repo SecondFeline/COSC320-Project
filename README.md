@@ -5,6 +5,10 @@
 -  Our **Jupyter Notebook** can be found [here](https://github.com/SecondFeline/COSC320-Project/blob/main/Algorithms.ipynb)
 -  Our final milestone **video** can be found [here](https://youtu.be/fwM99I3LOvQ)
 
+## Set-Up to Run our Algorithms
+In the canvas submission is a link to a google drive file that contains the giant string that our algorithms will analyse.  Download this file and add it to the directory of the project.  Please run each cell in the notebook top to bottom.  NOTE: You may need to download pygtrie to be able to run our algorithm.
+
+
 ## Introduction
 
 Our project topic involved efficiently replacing abbreviations wtihin a large comma-separated value file of App Store reviews with their full-word equivalents. An abbreviation such as "ASAP" for example, is replaced with "As Soon As Possible" in the output file. We began by taking Dr. Fard's provided dataset and running 2 Python scripts to remove all non-review related information, and then combining all the reviews into one giant string (aptly named, "one-giant-string.txt"). This text file served as our input for 2 different implementations of algorithms for replacing abbreviations.
